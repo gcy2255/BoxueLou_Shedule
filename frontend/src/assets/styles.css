@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  color: #fff;
+}
+
+#app {
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.time-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 1.1rem;
+  color: #8892b0;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  border: 2px solid #3a7bd5;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #00d2ff;
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+}
+
+.search-input::placeholder {
+  color: #8892b0;
+}
+
+.floor-section {
+  margin-bottom: 30px;
+}
+
+.floor-title {
+  font-size: 1.3rem;
+  color: #3a7bd5;
+  margin-bottom: 15px;
+  padding-left: 10px;
+  border-left: 4px solid #3a7bd5;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.room-card {
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.room-card.free {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+  border: 2px solid #00b894;
+}
+
+.room-card.occupied {
+  background: linear-gradient(135deg, #e17055 0%, #d63031 100%);
+  border: 2px solid #e17055;
+}
+
+.room-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.room-info {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.room-status {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.room-card.free .room-status {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.room-card.occupied .room-status {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 弹窗样式 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid #3a7bd5;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  color: #00d2ff;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #8892b0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 12px;
+  border: 1px solid #3a7bd5;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.schedule-table th {
+  background: rgba(58, 123, 213, 0.3);
+  color: #00d2ff;
+  font-weight: bold;
+}
+
+.schedule-table td {
+  background: rgba(255, 255, 255, 0.05);
+  min-width: 100px;
+}
+
+.schedule-table td.has-course {
+  background: rgba(225, 112, 85, 0.3);
+  color: #ff7675;
+}
+
+.course-info {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.course-info .course-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.course-info .teacher {
+  color: #8892b0;
+  font-size: 0.8rem;
+}
+
+.period-label {
+  font-size: 0.85rem;
+  color: #8892b0;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  color: #8892b0;
+  font-size: 1.2rem;
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: #8892b0;
+}
